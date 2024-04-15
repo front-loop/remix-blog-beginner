@@ -9,9 +9,11 @@
     "format": "prettier --cache --write ."
   },
   "dependencies": {
+    "@nextui-org/react": "^2.2.10",
     "@remix-run/node": "^2.8.1",
     "@remix-run/react": "^2.8.1",
     "@remix-run/serve": "^2.8.1",
+    "framer-motion": "^11.0.28",
     "isbot": "^4.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
