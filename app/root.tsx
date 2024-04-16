@@ -16,10 +16,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
-        {children}
-        <ScrollRestoration />
-        <Scripts />
+      <body className="min-h-dvh bg-background font-serif text-foreground antialiased">
+        <NextUIProvider>
+          {children}
+          <ScrollRestoration />
+          <Scripts />
+        </NextUIProvider>
       </body>
     </html>
   )
@@ -27,8 +29,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return (
-    <NextUIProvider>
+    <div className="grid min-h-dvh grid-cols-[1fr_min(70ch,calc(100%_-_64px))_1fr] gap-x-8 py-16">
       <Outlet />
-    </NextUIProvider>
+    </div>
   )
 }
