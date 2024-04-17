@@ -1,6 +1,6 @@
 import { Button, Input, Textarea } from '@nextui-org/react'
 import { ActionFunctionArgs, json, redirect } from '@remix-run/node'
-import { Form, useActionData, useNavigation } from '@remix-run/react'
+import { Form, Link, useActionData, useNavigation } from '@remix-run/react'
 import { prisma } from '~/db.server'
 
 export async function action({ request }: ActionFunctionArgs) {
@@ -40,13 +40,30 @@ export default function NewPost() {
     <div className="col-[2]">
       <Form method="post">
         <div className="flex flex-col gap-3">
-          <h1 className="text-xl">发布文章</h1>
-          <Input name="slug" label="slug" isInvalid={!!errors?.slug} errorMessage={errors?.slug} />
-          <Input name="title" label="文章标题" isInvalid={!!errors?.title} errorMessage={errors?.title} />
-          <Textarea name="content" label="文章内容" isInvalid={!!errors?.content} errorMessage={errors?.content} />
-          <Button type="submit" color="primary" isLoading={navigation.state === 'submitting'}>
-            发布
-          </Button>
+          <h1 className="font-serif text-xl font-bold">New Post</h1>
+          <Input name="slug" label="slug" variant="bordered" isInvalid={!!errors?.slug} errorMessage={errors?.slug} />
+          <Input
+            name="title"
+            label="title"
+            variant="bordered"
+            isInvalid={!!errors?.title}
+            errorMessage={errors?.title}
+          />
+          <Textarea
+            name="content"
+            label="content"
+            variant="bordered"
+            isInvalid={!!errors?.content}
+            errorMessage={errors?.content}
+          />
+          <div className="flex gap-3">
+            <Button type="submit" variant="bordered" isLoading={navigation.state === 'submitting'} className="flex-[2]">
+              Submit
+            </Button>
+            <Button type="reset" variant="bordered" className="flex-1">
+              <Link to="/">Cancel</Link>
+            </Button>
+          </div>
         </div>
       </Form>
     </div>

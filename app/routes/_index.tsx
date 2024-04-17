@@ -4,7 +4,7 @@ import { Link, useLoaderData, useSearchParams } from '@remix-run/react'
 import { Plus } from 'lucide-react'
 import { prisma } from '~/db.server'
 
-const PAGE_SIZE = 2
+const PAGE_SIZE = 3
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const searchParams = new URL(request.url).searchParams
@@ -36,8 +36,8 @@ export default function Index() {
   return (
     <div className="col-[2]">
       <div className="mb-8 flex items-center justify-between">
-        <h1 className="text-3xl font-bold">Remix Blog</h1>
-        <Button color="primary" isIconOnly>
+        <h1 className="font-serif text-4xl font-bold">Remix Blog</h1>
+        <Button color="primary" variant="bordered" size="sm" isIconOnly>
           <Link to="/posts/new">
             <Plus className="size-4" />
           </Link>
@@ -46,7 +46,7 @@ export default function Index() {
       <div className="flex flex-col gap-3">
         {posts.map((post) => (
           <div key={post.id}>
-            <Link to={`/posts/${post.id}`} className="text-xl">
+            <Link to={`/posts/${post.id}`} className="text-lg">
               {post.title}
             </Link>
             <div className="font-mono text-sm text-gray-500/80">{post.createdAt}</div>
@@ -56,6 +56,7 @@ export default function Index() {
       {pageCount > 1 && (
         <Pagination
           className="mt-5 font-mono"
+          variant="bordered"
           page={page}
           total={pageCount}
           onChange={(newPage) => {

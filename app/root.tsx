@@ -16,7 +16,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="min-h-dvh bg-background font-serif text-foreground antialiased">
+      <body className="min-h-dvh bg-background font-sans text-foreground antialiased">
         <NextUIProvider>
           {children}
           <ScrollRestoration />
