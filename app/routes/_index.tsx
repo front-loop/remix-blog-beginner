@@ -37,11 +37,11 @@ export default function Index() {
     <div className="col-[2]">
       <div className="mb-8 flex items-center justify-between">
         <h1 className="font-serif text-4xl font-bold">Remix Blog</h1>
-        <Button color="primary" variant="bordered" size="sm" isIconOnly>
-          <Link to="/posts/new">
+        <Link to="/posts/new">
+          <Button variant="bordered" size="sm" isIconOnly>
             <Plus className="size-4" />
-          </Link>
-        </Button>
+          </Button>
+        </Link>
       </div>
       <div className="flex flex-col gap-3">
         {posts.map((post) => (

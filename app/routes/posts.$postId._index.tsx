@@ -1,6 +1,6 @@
-import { Button } from '@nextui-org/react'
+import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure } from '@nextui-org/react'
 import { LoaderFunctionArgs, json } from '@remix-run/node'
-import { Form, Link, useLoaderData, useNavigation } from '@remix-run/react'
+import { Form, Link, useLoaderData, useNavigation, useSubmit } from '@remix-run/react'
 import { Edit, Trash2 } from 'lucide-react'
 import ReactMarkdown from 'react-markdown'
 import invariant from 'tiny-invariant'
@@ -17,31 +17,59 @@ export async function loader({ params }: LoaderFunctionArgs) {
 }
 
 export default function Post() {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure()
   const { post } = useLoaderData<typeof loader>()
   const navigation = useNavigation()
+  const submit = useSubmit()
 
   return (
     <div className="col-[2]">
       <div className="prose dark:prose-invert">
         <h1>{post.title}</h1>
-        <div className="not-prose flex gap-3">
-          <Button color="primary" variant="bordered" size="sm" isIconOnly>
-            <Link to={`/posts/${post.id}/edit`}>
+        <div className="not-prose flex gap-2">
+          <Link to={`/posts/${post.id}/edit`}>
+            <Button variant="bordered" size="sm" isIconOnly>
               <Edit className="size-4" />
-            </Link>
-          </Button>
-          <Form method="post" action={`/posts/${post.id}/delete`}>
-            <Button
-              type="submit"
-              color="danger"
-              variant="bordered"
-              size="sm"
-              isIconOnly
-              isLoading={navigation.state === 'submitting'}
-            >
-              <Trash2 className="size-4" />
             </Button>
-          </Form>
+          </Link>
+          <Button
+            type="submit"
+            variant="bordered"
+            size="sm"
+            isIconOnly
+            isLoading={navigation.state === 'submitting'}
+            onPress={onOpen}
+          >
+            <Trash2 className="size-4" />
+          </Button>
+          <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+            <ModalContent>
+              {(onClose) => (
+                <>
+                  <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
+                  <ModalBody>
+                    <p>Are you sure to delete this post?</p>
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button
+                      color="danger"
+                      onPress={() => {
+                        const formData = new FormData()
+                        formData.set('action', 'delete')
+                        submit(formData, {
+                          method: 'POST',
+                          action: `/posts/${post.id}/delete`,
+                        })
+                      }}
+                    >
+                      Delete
+                    </Button>
+                    <Button onPress={onClose}>Cancel</Button>
+                  </ModalFooter>
+                </>
+              )}
+            </ModalContent>
+          </Modal>
         </div>
         <ReactMarkdown>{post.content}</ReactMarkdown>
       </div>
