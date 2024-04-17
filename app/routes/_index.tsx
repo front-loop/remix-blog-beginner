@@ -1,10 +1,11 @@
 import { Button, Pagination } from '@nextui-org/react'
 import { LoaderFunctionArgs, json } from '@remix-run/node'
 import { Link, useLoaderData, useSearchParams } from '@remix-run/react'
+import dayjs from 'dayjs'
 import { Plus } from 'lucide-react'
 import { prisma } from '~/db.server'
 
-const PAGE_SIZE = 3
+const PAGE_SIZE = 5
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const searchParams = new URL(request.url).searchParams
@@ -49,7 +50,7 @@ export default function Index() {
             <Link to={`/posts/${post.id}`} className="text-lg">
               {post.title}
             </Link>
-            <div className="font-mono text-sm text-gray-500/80">{post.createdAt}</div>
+            <div className="font-mono text-sm text-gray-500/80">{dayjs(post.createdAt).format('YY-MM-DD HH:mm')}</div>
           </div>
         ))}
       </div>
