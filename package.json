@@ -6,7 +6,12 @@
     "build": "remix vite:build",
     "dev": "remix vite:dev",
     "start": "remix-serve ./build/server/index.js",
-    "format": "prettier --cache --write ."
+    "format": "prettier --cache --write .",
+    "db:push": "prisma db push",
+    "db:seed": "prisma db seed"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
     "@nextui-org/react": "^2.2.10",
@@ -16,20 +21,25 @@
     "@remix-run/serve": "^2.8.1",
     "framer-motion": "^11.0.28",
     "isbot": "^4.1.0",
+    "lucide-react": "^0.368.0",
     "prisma": "^5.12.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-markdown": "^9.0.1"
   },
   "devDependencies": {
     "@mancuoj/prettier-config": "^0.1.4",
     "@remix-run/dev": "^2.8.1",
+    "@tailwindcss/typography": "^0.5.12",
+    "@types/node": "^20.12.7",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
     "prettier": "^3.2.5",
     "tailwindcss": "^3.4.3",
-    "typescript": "^5.1.6",
+    "tsx": "^4.7.2",
+    "typescript": "^5.4.5",
     "vite": "^5.1.0",
     "vite-tsconfig-paths": "^4.2.1"
   },
