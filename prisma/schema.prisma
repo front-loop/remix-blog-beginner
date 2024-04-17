@@ -13,3 +13,7 @@ model Post {
   content   String
   createdAt DateTime @default(now()) @map("created_at")
 }
+
+model User {
+  password String @id
+}

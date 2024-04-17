@@ -1,13 +1,17 @@
 import { Button, Pagination } from '@nextui-org/react'
-import { LoaderFunctionArgs, json } from '@remix-run/node'
+import { LoaderFunctionArgs, json, redirect } from '@remix-run/node'
 import { Link, useLoaderData, useSearchParams } from '@remix-run/react'
 import dayjs from 'dayjs'
 import { Plus } from 'lucide-react'
 import { prisma } from '~/db.server'
+import { auth } from '~/session.server'
 
 const PAGE_SIZE = 5
 
 export async function loader({ request }: LoaderFunctionArgs) {
+  const user = await auth(request)
+  if (!user) return redirect('/login')
+
   const searchParams = new URL(request.url).searchParams
   const page = parseInt(searchParams.get('page') || '1')
 

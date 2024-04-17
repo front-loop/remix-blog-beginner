@@ -5,7 +5,14 @@ const prisma = new PrismaClient()
 async function seed() {
   console.log('Seeding database ...')
 
+  await prisma.user.deleteMany()
   await prisma.post.deleteMany()
+
+  await prisma.user.create({
+    data: {
+      password: 'pwd',
+    },
+  })
 
   const posts = [
     {
