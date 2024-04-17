@@ -25,7 +25,8 @@
     "prisma": "^5.12.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-markdown": "^9.0.1"
+    "react-markdown": "^9.0.1",
+    "tiny-invariant": "^1.3.3"
   },
   "devDependencies": {
     "@mancuoj/prettier-config": "^0.1.4",

@@ -13,9 +13,9 @@ export async function action({ request }: ActionFunctionArgs) {
     return json({
       success: false,
       errors: {
-        slug: !slug ? '必须填写 slug' : '',
-        title: !title ? '必须填写标题' : '',
-        content: !content ? '必须填写内容' : '',
+        slug: !slug ? 'slug is required' : '',
+        title: !title ? 'title is required' : '',
+        content: !content ? 'content is required' : '',
       },
     })
   }
@@ -60,7 +60,7 @@ export default function NewPost() {
             <Button type="submit" variant="bordered" isLoading={navigation.state === 'submitting'} className="flex-[2]">
               Submit
             </Button>
-            <Button type="reset" variant="bordered" className="flex-1">
+            <Button variant="bordered" className="flex-1">
               <Link to="/">Cancel</Link>
             </Button>
           </div>
