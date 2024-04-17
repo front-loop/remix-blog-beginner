@@ -35,7 +35,7 @@ export default function Index() {
 
   return (
     <div className="col-[2]">
-      <div className="mb-8 flex items-center justify-between">
+      <div className="mb-8 flex items-end gap-5">
         <h1 className="font-serif text-4xl font-bold">Remix Blog</h1>
         <Link to="/posts/new">
           <Button variant="bordered" size="sm" isIconOnly>

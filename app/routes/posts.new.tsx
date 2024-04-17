@@ -60,9 +60,11 @@ export default function NewPost() {
             <Button type="submit" variant="bordered" isLoading={navigation.state === 'submitting'} className="flex-[2]">
               Submit
             </Button>
-            <Button variant="bordered" className="flex-1">
-              <Link to="/">Cancel</Link>
-            </Button>
+            <Link to="/">
+              <Button variant="bordered" className="flex-1">
+                Cancel
+              </Button>
+            </Link>
           </div>
         </div>
       </Form>

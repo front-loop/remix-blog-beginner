@@ -42,11 +42,11 @@ export default function Post() {
           >
             <Trash2 className="size-4" />
           </Button>
-          <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+          <Modal isOpen={isOpen} onOpenChange={onOpenChange} size="sm" backdrop="blur">
             <ModalContent>
               {(onClose) => (
                 <>
-                  <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
+                  <ModalHeader className="flex flex-col gap-1">Delete</ModalHeader>
                   <ModalBody>
                     <p>Are you sure to delete this post?</p>
                   </ModalBody>
@@ -62,7 +62,7 @@ export default function Post() {
                         })
                       }}
                     >
-                      Delete
+                      Confirm
                     </Button>
                     <Button onPress={onClose}>Cancel</Button>
                   </ModalFooter>

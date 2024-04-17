@@ -29,7 +29,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return (
-    <div className="grid min-h-dvh grid-cols-[1fr_min(70ch,calc(100%_-_64px))_1fr] gap-x-8 py-16">
+    <div className="grid min-h-dvh grid-cols-[1fr_min(70ch,calc(100%_-_64px))_1fr] gap-x-8 pt-20">
       <Outlet />
     </div>
   )
