@@ -1,14 +1,9 @@
 import { Button, Input } from '@nextui-org/react'
-import { ActionFunctionArgs, LoaderFunctionArgs, json, redirect } from '@remix-run/node'
+import { ActionFunctionArgs, json, redirect } from '@remix-run/node'
 import { Form } from '@remix-run/react'
 import { ArrowRight } from 'lucide-react'
 import { prisma } from '~/db.server'
-import { auth, userSessionStorage } from '~/session.server'
-
-export async function loader({ request }: LoaderFunctionArgs) {
-  const user = await auth(request)
-  if (user) return redirect('/')
-}
+import { userSessionStorage } from '~/session.server'
 
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData()

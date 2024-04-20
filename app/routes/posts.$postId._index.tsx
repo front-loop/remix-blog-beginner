@@ -1,6 +1,6 @@
 import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure } from '@nextui-org/react'
 import { LoaderFunctionArgs, json } from '@remix-run/node'
-import { Form, Link, useLoaderData, useNavigation, useSubmit } from '@remix-run/react'
+import { Link, useLoaderData, useNavigation, useSubmit } from '@remix-run/react'
 import { Edit, Trash2 } from 'lucide-react'
 import ReactMarkdown from 'react-markdown'
 import invariant from 'tiny-invariant'
